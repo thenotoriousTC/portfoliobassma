@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { Play } from 'lucide-react';
-import { useRef } from 'react';
+import { Play, Pause } from 'lucide-react';
+import { useRef, useState } from 'react';
 
 // Data for the portfolio items
 const portfolioItems = [
@@ -48,18 +48,21 @@ const portfolioItems = [
 
 function GalleryItem({ item }: { item: typeof portfolioItems[0] }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  const handleMouseEnter = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (videoRef.current) {
+  const togglePlayPause = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
       videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      videoRef.current.play();
+      setIsPlaying(true);
     }
   };
+
+  // Sync state if the video ends naturally
+  const handleEnded = () => setIsPlaying(false);
 
   return (
     <motion.div 
@@ -69,11 +72,7 @@ function GalleryItem({ item }: { item: typeof portfolioItems[0] }) {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div 
-        className={`video-wrapper ${item.portrait ? 'portrait' : ''}`}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
+      <div className={`video-wrapper ${item.portrait ? 'portrait' : ''}`}>
         <video 
           ref={videoRef}
           className="gallery-video"
@@ -81,6 +80,7 @@ function GalleryItem({ item }: { item: typeof portfolioItems[0] }) {
           muted
           loop
           playsInline
+          onEnded={handleEnded}
         />
       </div>
       
@@ -112,21 +112,18 @@ function GalleryItem({ item }: { item: typeof portfolioItems[0] }) {
           {item.description}
         </motion.p>
         
-        <motion.a 
-          href="https://www.instagram.com/propod_agency/"
-          target="_blank"
-          rel="noopener noreferrer"
+        <motion.button 
           className="play-btn"
-          style={{ textDecoration: 'none' }}
+          onClick={togglePlayPause}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.6 }}
         >
           <div className="play-icon-circle">
-            <Play size={18} fill="currentColor" />
+            {isPlaying ? <Pause size={18} fill="currentColor" /> : <Play size={18} fill="currentColor" />}
           </div>
-          Watch Project
-        </motion.a>
+          {isPlaying ? 'Pause' : 'Play Project'}
+        </motion.button>
       </div>
     </motion.div>
   );
