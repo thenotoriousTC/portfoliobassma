@@ -6,41 +6,41 @@ import { useRef, useState } from 'react';
 const portfolioItems = [
   {
     id: 1,
-    title: 'Delivery Service Ad',
-    category: 'Commercial • Video',
-    description: 'A fast-paced, dynamic commercial shot for a leading delivery company highlighting speed and reliability.',
+    title: 'Publicité Service de Livraison',
+    category: 'Commercial • Vidéo',
+    description: 'Une publicité dynamique et rythmée réalisée pour une entreprise de livraison de premier plan, mettant en avant la rapidité et la fiabilité.',
     src: '/2026-04-30 15.40.04.mp4',
     portrait: false,
   },
   {
     id: 2,
-    title: 'Professional Webinar',
-    category: 'Event • Documentation',
-    description: 'High-quality multi-camera recording and editing for an educational webinar, capturing the essence of the speakers.',
+    title: 'Webinaire Professionnel',
+    category: 'Événement • Documentation',
+    description: 'Enregistrement et montage multi-caméras de haute qualité pour un webinaire éducatif, capturant l\'essence des intervenants.',
     src: '/DSCF2321_1.mp4',
     portrait: true,
   },
   {
     id: 3,
-    title: 'Course Promo Motion',
-    category: 'Promotional • Motion',
-    description: 'A cinematic motion picture ad designed to promote an online course, using engaging visuals and smooth transitions.',
+    title: 'Vidéo Promotionnelle de Formation',
+    category: 'Promotionnel • Motion Design',
+    description: 'Une publicité cinématographique conçue pour promouvoir une formation en ligne, avec des visuels attrayants et des transitions fluides.',
     src: '/2026-04-30 15.42.15.mp4',
     portrait: false,
   },
   {
     id: 4,
-    title: 'Podcast Episode 08',
+    title: 'Épisode de Podcast 08',
     category: 'Podcast • Interview',
-    description: 'Intimate and professional studio recording for a business podcast, featuring a high-profile company owner.',
+    description: 'Enregistrement studio intimiste et professionnel pour un podcast d\'entreprise, avec un chef d\'entreprise de renom.',
     src: '/2026-05-01 00.57.44.mp4',
     portrait: false,
   },
   {
     id: 5,
-    title: 'Live Event Interview',
-    category: 'Corporate • Event',
-    description: 'On-the-fly, professional interview with a corporate representative at a major industry event.',
+    title: 'Interview en Direct',
+    category: 'Corporate • Événement',
+    description: 'Interview professionnelle sur le vif avec un représentant d\'entreprise lors d\'un événement majeur du secteur.',
     src: '/2026-05-01 00.57.18.mp4',
     portrait: true,
   }
@@ -130,7 +130,7 @@ function GalleryItem({ item }: { item: typeof portfolioItems[0] }) {
           <div className="play-icon-circle">
             {isPlaying ? <Pause size={18} fill="currentColor" /> : <Play size={18} fill="currentColor" />}
           </div>
-          {isPlaying ? 'Pause' : 'Play Project'}
+          {isPlaying ? 'Pause' : 'Voir le Projet'}
         </motion.button>
       </div>
     </motion.div>
@@ -143,8 +143,8 @@ function App() {
       <nav className="nav-header">
         <div className="logo serif">B. Sahraoui</div>
         <div className="nav-links">
-          <a href="#work">Work</a>
-          <a href="#about">About</a>
+          <a href="#work">Portfolio</a>
+          <a href="#about">À Propos</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
@@ -165,8 +165,8 @@ function App() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              Photographer, videographer, and voiceover artist based in Setif, Algeria. 
-              Crafting visual narratives that captivate and inspire.
+              Photographe, vidéaste et voix off basée à Sétif, Algérie. 
+              Je crée des récits visuels qui captivent et inspirent.
             </motion.p>
           </div>
           
@@ -186,7 +186,7 @@ function App() {
           animate={{ opacity: 0.6 }}
           transition={{ duration: 1, delay: 1 }}
         >
-          <span style={{ fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Scroll</span>
+          <span style={{ fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Défiler</span>
           <div className="scroll-line"></div>
         </motion.div>
       </section>
@@ -199,7 +199,7 @@ function App() {
           viewport={{ once: true }}
           transition={{ duration: 1 }}
         >
-          Selected Works
+          Sélection de Réalisations
         </motion.h2>
         
         <div className="gallery-grid">
@@ -216,13 +216,18 @@ function App() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="footer-title serif">Let's create together.</h2>
+          <h2 className="footer-title serif">Créons ensemble.</h2>
           <p style={{ marginBottom: '2rem', color: 'var(--text-secondary)' }}>
-            Available for freelance opportunities and collaborations.
+            Disponible pour des opportunités en freelance et des collaborations.
           </p>
-          <a href="mailto:contact@example.com" className="footer-contact">
-            contact@bassmasahraoui.com
-          </a>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
+            <a href="https://instagram.com/podcast_bassma" target="_blank" rel="noopener noreferrer" className="footer-contact">
+              @podcast_bassma
+            </a>
+            <a href="tel:+213674346673" className="footer-contact">
+              0674346673
+            </a>
+          </div>
         </motion.div>
       </footer>
     </>
