@@ -71,11 +71,27 @@ h1, h2, h3, h4, h5, h6, .serif {
   text-decoration: none;
   color: var(--text-primary);
   opacity: 0.7;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
   opacity: 1;
+}
+
+/* Desktop-only button styling for nav links */
+@media (min-width: 769px) {
+  .nav-links a {
+    background-color: var(--text-primary);
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 2rem;
+    opacity: 0.9;
+  }
+  
+  .nav-links a:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
 }
 
 .hero-section {
@@ -214,8 +230,8 @@ h1, h2, h3, h4, h5, h6, .serif {
 }
 
 .video-wrapper.portrait {
-  aspect-ratio: 4/5;
-  width: 80%;
+  aspect-ratio: 9/16;
+  width: 70%;
   margin: 0 auto;
 }
 

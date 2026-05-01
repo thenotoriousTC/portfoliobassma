@@ -26,7 +26,7 @@ const portfolioItems = [
     category: 'Promotionnel • Motion Design',
     description: 'Une publicité cinématographique conçue pour promouvoir une formation en ligne, avec des visuels attrayants et des transitions fluides.',
     src: '/2026-04-30 15.42.15.mp4',
-    portrait: false,
+    portrait: true,
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ const portfolioItems = [
     category: 'Podcast • Interview',
     description: 'Enregistrement studio intimiste et professionnel pour un podcast d\'entreprise, avec un chef d\'entreprise de renom.',
     src: '/2026-05-01 00.57.44.mp4',
-    portrait: false,
+    portrait: true,
   },
   {
     id: 5,
@@ -72,7 +72,7 @@ function GalleryItem({ item }: { item: typeof portfolioItems[0] }) {
   const handleEnded = () => setIsPlaying(false);
 
   return (
-    <motion.div 
+    <motion.div
       className="gallery-item"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -80,7 +80,7 @@ function GalleryItem({ item }: { item: typeof portfolioItems[0] }) {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className={`video-wrapper ${item.portrait ? 'portrait' : ''}`}>
-        <video 
+        <video
           ref={videoRef}
           className="gallery-video"
           src={item.src}
@@ -91,9 +91,9 @@ function GalleryItem({ item }: { item: typeof portfolioItems[0] }) {
           onEnded={handleEnded}
         />
       </div>
-      
+
       <div className="item-details">
-        <motion.span 
+        <motion.span
           className="item-category"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -101,8 +101,8 @@ function GalleryItem({ item }: { item: typeof portfolioItems[0] }) {
         >
           {item.category}
         </motion.span>
-        
-        <motion.h3 
+
+        <motion.h3
           className="item-title serif"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -110,8 +110,8 @@ function GalleryItem({ item }: { item: typeof portfolioItems[0] }) {
         >
           {item.title}
         </motion.h3>
-        
-        <motion.p 
+
+        <motion.p
           className="item-description"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -119,8 +119,8 @@ function GalleryItem({ item }: { item: typeof portfolioItems[0] }) {
         >
           {item.description}
         </motion.p>
-        
-        <motion.button 
+
+        <motion.button
           className="play-btn"
           onClick={togglePlayPause}
           initial={{ opacity: 0 }}
@@ -157,7 +157,7 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Bassma<br/>
+              Bassma<br />
               Sahraoui.
             </motion.h1>
             <motion.p
@@ -165,12 +165,12 @@ function App() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              Photographe, vidéaste et voix off basée à Sétif, Algérie. 
+              Photographe, vidéaste et voix off basée à Sétif, Algérie.
               Je crée des récits visuels qui captivent et inspirent.
             </motion.p>
           </div>
-          
-          <motion.div 
+
+          <motion.div
             className="hero-image-container"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -180,7 +180,7 @@ function App() {
           </motion.div>
         </div>
 
-        <motion.div 
+        <motion.div
           className="scroll-indicator"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.6 }}
@@ -192,7 +192,7 @@ function App() {
       </section>
 
       <section id="work" className="gallery-section">
-        <motion.h2 
+        <motion.h2
           className="gallery-title serif"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -201,7 +201,7 @@ function App() {
         >
           Sélection de Réalisations
         </motion.h2>
-        
+
         <div className="gallery-grid">
           {portfolioItems.map((item) => (
             <GalleryItem key={item.id} item={item} />
