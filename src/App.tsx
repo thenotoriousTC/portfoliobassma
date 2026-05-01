@@ -33,7 +33,7 @@ const portfolioItems = [
     title: 'Podcast Episode 08',
     category: 'Podcast • Interview',
     description: 'Intimate and professional studio recording for a business podcast, featuring a high-profile company owner.',
-    src: '/Sequence 08_3.mp4',
+    src: '/2026-05-01 00.57.44.mp4',
     portrait: false,
   },
   {
@@ -41,7 +41,7 @@ const portfolioItems = [
     title: 'Live Event Interview',
     category: 'Corporate • Event',
     description: 'On-the-fly, professional interview with a corporate representative at a major industry event.',
-    src: '/C3617_5.mp4',
+    src: '/2026-05-01 00.57.18.mp4',
     portrait: true,
   }
 ];
@@ -112,18 +112,21 @@ function GalleryItem({ item }: { item: typeof portfolioItems[0] }) {
           {item.description}
         </motion.p>
         
-        <motion.button 
+        <motion.a 
+          href="https://www.instagram.com/propod_agency/"
+          target="_blank"
+          rel="noopener noreferrer"
           className="play-btn"
+          style={{ textDecoration: 'none' }}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          onClick={handleMouseEnter}
         >
           <div className="play-icon-circle">
             <Play size={18} fill="currentColor" />
           </div>
           Watch Project
-        </motion.button>
+        </motion.a>
       </div>
     </motion.div>
   );
