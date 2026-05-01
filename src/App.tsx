@@ -61,6 +61,13 @@ function GalleryItem({ item }: { item: typeof portfolioItems[0] }) {
     }
   };
 
+  // Seek to 1.5s on load so the browser renders a real frame as the thumbnail
+  const handleLoadedMetadata = () => {
+    if (videoRef.current && !isPlaying) {
+      videoRef.current.currentTime = 1.5;
+    }
+  };
+
   // Sync state if the video ends naturally
   const handleEnded = () => setIsPlaying(false);
 
@@ -77,9 +84,10 @@ function GalleryItem({ item }: { item: typeof portfolioItems[0] }) {
           ref={videoRef}
           className="gallery-video"
           src={item.src}
-          muted
           loop
           playsInline
+          preload="metadata"
+          onLoadedMetadata={handleLoadedMetadata}
           onEnded={handleEnded}
         />
       </div>
